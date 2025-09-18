@@ -1,12 +1,3 @@
-# from flask import Blueprint, jsonify
-
-# alerts_bp = Blueprint("alerts", __name__)
-
-# @alerts_bp.route("/alerts", methods=["GET"])
-# def get_alerts():
-#     return jsonify({"message": "Alerts route is working!"})
-
-
 from flask import Blueprint, jsonify, request
 from utils import (
     get_all_alerts,
@@ -55,3 +46,4 @@ def fetch_recent_alerts(limit):
 def fetch_yes_no_alerts():
     alerts = get_yes_no_alerts()
     return jsonify(alerts), 200
+

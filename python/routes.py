@@ -1,145 +1,3 @@
-# # # routes.py
-# # from flask import Blueprint, Response, request, jsonify
-# # import camera
-# # from camera import generate_frames
-# # from utils import save_alert_to_db, get_all_alerts   # ✅ import DB helpers
-
-# # routes = Blueprint('routes', __name__)
-
-# # # ------------------- CAMERA STREAM -------------------
-# # @routes.route('/video_feed')
-# # def video_feed():
-# #     return Response(
-# #         generate_frames(),
-# #         mimetype='multipart/x-mixed-replace; boundary=frame'
-# #     )
-
-# # # ------------------- START/STOP MODEL -------------------
-# # @routes.route('/start-model', methods=['POST'])
-# # def start_model():
-# #     camera.running_model = True
-# #     print("[DEBUG] Model started ✅")
-# #     return jsonify({"status": "success", "message": "Model started"})
-
-# # @routes.route('/stop-model', methods=['POST'])
-# # def stop_model():
-# #     camera.running_model = False
-# #     print("[DEBUG] Model stopped ❌")
-# #     return jsonify({"status": "success", "message": "Model stopped"})
-
-# # @app.route('/camera-locations')
-# # def camera_locations():
-# #     cameras = [
-# #         {"id": 1, "name": "Entrance", "lat": 13.0827, "lng": 80.2707},
-# #         {"id": 2, "name": "Parking Lot", "lat": 13.0850, "lng": 80.2740},
-# #     ]
-# #     return jsonify(cameras)
-
-# # # ------------------- ALERTS API -------------------
-# # @routes.route('/api/alerts', methods=['POST'])
-# # def receive_alert():
-# #     """
-# #     Endpoint to receive alerts and save them to the DB
-# #     """
-# #     data = request.get_json()
-# #     if not data:
-# #         return jsonify({"status": "error", "message": "No data provided"}), 400
-
-# #     try:
-# #         camera_id = data.get("camera_id")
-# #         keyword = data.get("keyword")
-# #         emotion = data.get("emotion")
-# #         timestamp = data.get("timestamp")
-
-# #         # ✅ Save alert to DB
-# #         save_alert_to_db(camera_id, keyword, emotion, timestamp)
-
-# #         return jsonify({"status": "success", "message": "Alert saved"}), 201
-# #     except Exception as e:
-# #         return jsonify({"status": "error", "message": str(e)}), 500
-
-
-# # @routes.route('/api/alerts', methods=['GET'])
-# # def get_alerts():
-# #     """
-# #     Fetch all alerts from the database
-# #     """
-# #     try:
-# #         alerts = get_alerts_from_db()
-# #         return jsonify(alerts), 200
-# #     except Exception as e:
-# #         return jsonify({"status": "error", "message": str(e)}), 500
-# from flask import Blueprint, Response, request, jsonify
-# import camera
-# from camera import generate_frames
-# from utils import save_alert_to_db, get_all_alerts   # ✅ import DB helpers
-
-# routes = Blueprint('routes', __name__)
-
-# # ------------------- CAMERA STREAM -------------------
-# @routes.route('/video_feed')
-# def video_feed():
-#     return Response(
-#         generate_frames(),
-#         mimetype='multipart/x-mixed-replace; boundary=frame'
-#     )
-
-# # ------------------- START/STOP MODEL -------------------
-# @routes.route('/start-model', methods=['POST'])
-# def start_model():
-#     camera.running_model = True
-#     print("[DEBUG] Model started ✅")
-#     return jsonify({"status": "success", "message": "Model started"})
-
-# @routes.route('/stop-model', methods=['POST'])
-# def stop_model():
-#     camera.running_model = False
-#     print("[DEBUG] Model stopped ❌")
-#     return jsonify({"status": "success", "message": "Model stopped"})
-
-# # ------------------- CAMERA LOCATIONS -------------------
-# @routes.route('/camera-locations', methods=['GET'])
-# def camera_locations():
-#     cameras = [
-#         {"id": 1, "name": "Entrance", "lat": 13.0827, "lng": 80.2707},
-#         {"id": 2, "name": "Parking Lot", "lat": 13.0850, "lng": 80.2740},
-#     ]
-#     return jsonify(cameras)
-
-# # ------------------- ALERTS API -------------------
-# @routes.route('/api/alerts', methods=['POST'])
-# def receive_alert():
-#     """
-#     Endpoint to receive alerts and save them to the DB
-#     """
-#     data = request.get_json()
-#     if not data:
-#         return jsonify({"status": "error", "message": "No data provided"}), 400
-
-#     try:
-#         camera_id = data.get("camera_id")
-#         keyword = data.get("keyword")
-#         emotion = data.get("emotion")
-#         timestamp = data.get("timestamp")
-
-#         # ✅ Save alert to DB
-#         save_alert_to_db(camera_id, keyword, emotion, timestamp)
-
-#         return jsonify({"status": "success", "message": "Alert saved"}), 201
-#     except Exception as e:
-#         return jsonify({"status": "error", "message": str(e)}), 500
-
-
-# @routes.route('/api/alerts', methods=['GET'])
-# def get_alerts():
-#     """
-#     Fetch all alerts from the database
-#     """
-#     try:
-#         alerts = get_all_alerts()   # ✅ corrected function
-#         return jsonify(alerts), 200
-#     except Exception as e:
-#         return jsonify({"status": "error", "message": str(e)}), 500
 from flask import Blueprint, Response, request, jsonify
 import camera
 from camera import generate_frames
@@ -147,9 +5,6 @@ from utils import save_alert_to_db, get_all_alerts   # ✅ import DB helpers
 
 routes = Blueprint('routes', __name__)
 
-# Mock database for camera locations (you can replace with actual DB)
-
-# ------------------- CAMERA STREAM -------------------
 @routes.route('/video_feed')
 def video_feed():
     return Response(
@@ -474,4 +329,5 @@ def get_alert(alert_id):
             "alert": formatted_alert
         }), 200
     except Exception as e:
+
         return jsonify({"status": "error", "message": str(e)}), 500

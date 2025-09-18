@@ -1,76 +1,4 @@
-// const db = require("../db/db");
-
-// const saveAlert = async (req, res) => {
-//   const { camera_id, keyword, emotion, timestamp } = req.body;
-
-//   try {
-//     const [result] = await db.execute(
-//       "INSERT INTO alerts (camera_id, keyword, emotion, timestamp) VALUES (?, ?, ?, ?)",
-//       [camera_id, keyword, emotion, timestamp]
-//     );
-//     res.status(201).json({ message: "Alert saved" });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
-// const getAlerts = async (req, res) => {
-//   try {
-//     const [rows] = await db.execute("SELECT * FROM alerts ORDER BY timestamp DESC");
-//     res.json(rows);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
-// module.exports = { saveAlert, getAlerts };
-
-// const db = require("../db/db");
-
-// const saveAlert = async (req, res) => {
-//   const { camera_id, keyword, lat, lng, timestamp } = req.body;
-  
-//    try {
-//     // ✅ Force conversion of keyword to "Yes" or "No"
-//     if (keyword && keyword.toLowerCase() === "danger") {
-//       keyword = "Yes";
-//     } else {
-//       keyword = "No";
-//     }
-//   // Validate keyword
-
-  
- 
-//     const [result] = await db.execute(
-//       "INSERT INTO alerts2 (camera_id, keyword, lat, lng, timestamp) VALUES (?, ?, ?, ?, ?)",
-//       [camera_id, keyword, lat, lng, timestamp]
-//     );
-
-//     console.log(
-//       `[DB] Alert saved: Camera=${camera_id}, Keyword=${keyword}, Location=(${lat}, ${lng})`
-//     );
-
-//     res.status(201).json({ message: "Alert saved" });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
-// const getAlerts = async (req, res) => {
-//   try {
-//     const [rows] = await db.execute("SELECT * FROM alerts2 ORDER BY timestamp DESC");
-//     res.json(rows);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
-// module.exports = { saveAlert, getAlerts };
-
 const db = require("../db/db");
-
-
-
 const CAMERA_LOCATIONS = {
   cam01: { lat: 13.0827, lng: 80.2707 },
   cam02: { lat: 13.0850, lng: 80.2740 },
@@ -147,3 +75,4 @@ const getAlerts = async (req, res) => {
 };
 
 module.exports = { saveAlert, getAlerts };
+

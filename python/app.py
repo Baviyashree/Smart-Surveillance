@@ -1,18 +1,3 @@
-# from flask import Flask
-# from flask_cors import CORS
-# from routes import routes
-# import camera 
-
-# app = Flask(__name__)
-# CORS(app)
-
-# app.register_blueprint(routes)
-
-# if __name__ == "__main__":
-#     app.run(host="0.0.0.0", port=9000)
-#     app.run(debug=True)
-
-
 from flask import Flask
 from flask_cors import CORS
 from routes import routes
@@ -34,10 +19,3 @@ app.register_blueprint(alerts_bp)
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=9000, debug=True)
 
-# app = Flask(__name__)
-
-# Register the blueprint
-# app.register_blueprint(alerts_bp)
-
-# if __name__ == "__main__":
-#     app.run(debug=True)

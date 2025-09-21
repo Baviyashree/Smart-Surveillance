@@ -83,7 +83,7 @@ def process_frame(frame):
                     # save_alert_to_db(camera_id="cam02", keyword=keyword, emotion=current_emotion)
                     response = requests.post("http://localhost:5000/api/alerts", json={
                     "camera_id": "cam02",
-                    "keyword": keyword,
+                    "keyword": "yes",
                     "emotion": current_emotion
                     })
                     print("✅ Alert sent to backend:", response.json())
@@ -95,3 +95,4 @@ def process_frame(frame):
                 clip_frames.clear()
 
     return frame
+

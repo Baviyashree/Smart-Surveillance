@@ -38,7 +38,7 @@ def save_alert_to_db(camera_id: str, keyword: str = None, emotion: str = None):
     longitude = location.get("lng")
 
     # ✅ Normalize keyword for DB constraint
-    keyword = "yes" if keyword and keyword.lower() == "danger" else "no"
+    keyword = "yes" if keyword and keyword.strip() != "" else "no"
 
     # ---- Local backup in SQLite ----
     conn = sqlite3.connect("alerts2.db")
@@ -153,3 +153,4 @@ if __name__ == "__main__":
     #     print(f"ID: {alert[0]}, Camera: {alert[1]}, Keyword: {alert[2]}, Emotion: {alert[3]}, "
 
     #           f"Location: ({alert[4]}, {alert[5]}), Time: {alert[6]}")
+
